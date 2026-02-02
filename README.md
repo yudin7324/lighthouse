@@ -1,6 +1,6 @@
 # frontend-test-questioncard
 
-## 1. Часть 1. Архитектура компонента
+## Часть 1. Архитектура компонента
 
 QuestionCard  
 ├── Stem (TipTap + KaTeX)  
