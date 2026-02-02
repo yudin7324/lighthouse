@@ -1,6 +1,6 @@
 # frontend-test-questioncard
 
-## 1. Архитектура
+## 1. Часть 1. Архитектура компонента
 
 QuestionCard  
 ├── Stem (TipTap + KaTeX)  
@@ -35,7 +35,7 @@ fast clicks:
 - кнопка Check disabled
 - повторные клики игнорируются
 
-## 2. Logic (pseudo)
+## Часть 2. Псевдокод логики
 
 ```pseudo
 # Проверка кнопки
@@ -71,7 +71,7 @@ function onQuestionChange():
   isChecking = false
 ```
 
-## 3. Edge cases / UX
+## Часть 3. Edge cases и UX
 
 no explanation:
 - блок не показываем
