@@ -7,20 +7,26 @@ QuestionCard
 ├── Answers  
 ├── Actions (Check)  
 ├── Explanation  
-└── ErrorBoundary  
+└── ErrorBoundary 
 
 State (local):
-- selectedAnswerId      // выбранный ответ
-- isChecked             // ответ проверен
-- isChecking            // идёт запрос
+- selectedAnswerId
+  выбранный ответ
+- isChecked
+  ответ проверен
+- isChecking
+  идёт запрос
 
 State (global):
-- questionId            // текущий вопрос
-- questionData          // данные вопроса
-- userMode              // demo / paid
+- questionId
+  текущий вопрос
+- questionData
+  данные вопроса
+- userMode
+  demo / paid
 
-selectedAnswerId — local  
-isChecked — local  
+selectedAnswerId — локальное  
+isChecked — локальное  
 
 on questionId change:
 - сброс локального состояния
@@ -31,23 +37,27 @@ fast clicks:
 
 ## 2. Logic (pseudo)
 
-if !selectedAnswerId → disable Check   // нельзя проверить без ответа
+Если selectedAnswerId пустой
+  disable Check
 
-selectAnswer(id):
-  if isChecked return                  // после проверки менять нельзя
+Функция selectAnswer(id):
+  Если isChecked = true
+    вернуть
   selectedAnswerId = id
 
-check():
-  if isChecking or isChecked return
+Функция check():
+  Если isChecking = true или isChecked = true
+    вернуть
   isChecking = true
   api.check()
-    → isChecked = true
-    → isChecking = false
+    после ответа:
+      isChecked = true
+      isChecking = false
 
-showExplanation =
-  isChecked &&
-  explanationExists &&
-  userMode === paid
+showExplanation:
+  показывать, если isChecked = true
+  и explanation существует
+  и userMode = paid
 
 onQuestionChange():
   selectedAnswerId = null
