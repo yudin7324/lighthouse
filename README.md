@@ -37,32 +37,39 @@ fast clicks:
 
 ## 2. Logic (pseudo)
 
-Если selectedAnswerId пустой
+```pseudo
+# Проверка кнопки
+if selectedAnswerId is empty
   disable Check
 
-Функция selectAnswer(id):
-  Если isChecked = true
-    вернуть
+# Выбор ответа
+function selectAnswer(id):
+  if isChecked = true
+    return
   selectedAnswerId = id
 
-Функция check():
-  Если isChecking = true или isChecked = true
-    вернуть
+# Проверка ответа
+function check():
+  if isChecking = true or isChecked = true
+    return
   isChecking = true
   api.check()
-    после ответа:
-      isChecked = true
-      isChecking = false
+    # после ответа
+    isChecked = true
+    isChecking = false
 
+# Показ explanation
 showExplanation:
   показывать, если isChecked = true
   и explanation существует
-  и userMode = paid
+  и userMode = 'paid'
 
-onQuestionChange():
+# Смена вопроса
+function onQuestionChange():
   selectedAnswerId = null
   isChecked = false
   isChecking = false
+```
 
 ## 3. Edge cases / UX
 
